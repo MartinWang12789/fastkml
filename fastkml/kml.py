@@ -990,6 +990,11 @@ class Document(_Container):
             feature = Folder(self.ns)
             feature.from_element(folder)
             self.append(feature)
+        documents = element.findall('%sDocument' % self.ns)
+        for document in documents:
+            feature = Document(self.ns)
+            feature.from_element(document)
+            self.append(feature)
         placemarks = element.findall('%sPlacemark' % self.ns)
         for placemark in placemarks:
             feature = Placemark(self.ns)
